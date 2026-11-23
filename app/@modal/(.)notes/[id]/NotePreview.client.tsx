@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 
-import { fetchNoteById } from "@/lib/api/index";
+import { fetchNoteById } from "@/lib/api";
 import type { Note } from "@/types/note";
 
 import Modal from "@/components/Modal/Modal";
@@ -27,6 +27,15 @@ export default function NotePreview() {
   return (
     <Modal onClose={() => router.back()}>
       <div className={css.container}>
+        <button
+          type="button"
+          onClick={() => router.back()}
+          aria-label="Close note preview"
+          className={css.closeButton}
+        >
+          ✕
+        </button>
+
         {isLoading && <p>Loading note...</p>}
 
         {isError && <p>Something went wrong. Please try again.</p>}
@@ -37,7 +46,6 @@ export default function NotePreview() {
             <div className={css.divider} />
             <span className={css.tag}>{note.tag}</span>
             <p className={css.content}>{note.content}</p>
-
             <div className={css.dates}>
               <span>
                 Created: {new Date(note.createdAt).toLocaleDateString("uk-UA")}

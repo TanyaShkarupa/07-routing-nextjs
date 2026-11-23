@@ -54,3 +54,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #333;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: #eee;
+}
